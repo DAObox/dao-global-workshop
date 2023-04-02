@@ -16,6 +16,7 @@ import {
 } from '@heroicons/react/24/outline'
 import Logo from '../components/Logo'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
+import Image from 'next/legacy/image'
 
 const navigation = [
   { name: 'Home', href: '#', icon: HomeIcon, current: false },
@@ -206,80 +207,17 @@ export default function Example() {
               <div className="flex h-16 shrink-0 items-center">
                 <ConnectButton />
               </div>
-              <nav className="flex flex-1 flex-col">
-                <ul role="list" className="flex flex-1 flex-col gap-y-7">
-                  <li>
-                    <ul role="list" className="-mx-2 space-y-1">
-                      {navigation.map((item) => (
-                        <li key={item.name}>
-                          <a
-                            href={item.href}
-                            className={classNames(
-                              item.current
-                                ? 'bg-black text-white'
-                                : 'text-gray-700 hover:text-white hover:bg-black',
-                              'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
-                            )}
-                          >
-                            <item.icon
-                              className={classNames(
-                                item.current ? 'text-white' : 'text-gray-400 group-hover:text-white',
-                                'h-6 w-6 shrink-0'
-                              )}
-                              aria-hidden="true"
-                            />
-                            {item.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
-                  <li>
-                    <div className="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
-                    <ul role="list" className="-mx-2 mt-2 space-y-1">
-                      {teams.map((team) => (
-                        <li key={team.name}>
-                          <a
-                            href={team.href}
-                            className={classNames(
-                              team.current
-                                ? 'bg-black text-white'
-                                : 'text-gray-700 hover:text-white hover:bg-black',
-                              'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
-                            )}
-                          >
-                            <span
-                              className={classNames(
-                                team.current
-                                  ? 'text-black border-indigo-600'
-                                  : 'text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-white',
-                                'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white'
-                              )}
-                            >
-                              {team.initial}
-                            </span>
-                            <span className="truncate">{team.name}</span>
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
-                  <li className="-mx-6 mt-auto">
-                    <a
-                      href="#"
-                      className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-black"
-                    >
-                      <img
-                        className="h-8 w-8 rounded-full bg-gray-50"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
-                      <span className="sr-only">Your profile</span>
-                      <span aria-hidden="true">Tom Cook</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
+              <div className="w-full flex flex-col items-center space-y-2.5">
+                <div>
+                  <div className='relative w-[84px] h-[84px]'>
+                    <Image src={"/tbx.png"} layout='fill' />
+                  </div>
+                </div>
+                <div>
+                  <h2 className='font-bold text-black text-[24px]'>XXXXDAO</h2>
+                  <p className='text-[18px]'>100K Members</p>
+                </div>
+              </div>
             </div>
           </div>
         </aside>
