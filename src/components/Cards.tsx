@@ -5,7 +5,7 @@ interface Props {
     image: string
     daoName: string
     address: string
-    active: boolean
+    active: string
     title: string
     description: string
 }
@@ -30,7 +30,7 @@ export default function Cards({ image, daoName, address, active, title, descript
                             <p className="max-w-xs text-sm truncate text-gray sm:max-w-full">{address}</p>
                         </div>
                         <div>
-                            <Badge active={active} />
+                            <Badge active={active == "Executed" ? false : true} />
                         </div>
                     </div>
                 <div>

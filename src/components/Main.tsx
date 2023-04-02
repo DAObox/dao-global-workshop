@@ -1,7 +1,9 @@
+import { useFetchDao, useFetchProposals } from "@daobox/use-aragon";
 import Cards from "./Cards";
+import { daoAddress } from "../constants"
 
 export default function Main() {
-    const data = [
+    const fetched = [
         {
             image: "/avatar.png",
             daoName: "XXXDAO",
@@ -43,6 +45,14 @@ export default function Main() {
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse inventore et sed? Blanditiis, beatae ut earum ea eveniet natus qui cupiditate provident in atque, corporis fuga necessitatibus, eum dolor totam."
         },
     ]
+    const { data: daoData, isLoading: daoIsLoading, isError: daoError } = useFetchDao({
+        daoAddressOrEns: daoAddress
+    })
+    const { data, isLoading, isError } = useFetchProposals({
+        daoAddressOrEns: daoAddress
+    })
+    console.log(data)
+    console.log(daoData)
     return(
         <main className="lg:pl-72">
           <div className="xl:pr-80">
@@ -58,8 +68,8 @@ export default function Main() {
                 </div>
                 <div className="space-y-2.5">
                     {
-                        data.map(item => <Cards image={item.image} daoName={item.daoName} address={item.address} 
-                            active={item.active} title={item.title} description={item.description} />)
+                        data?.map(item => <Cards image={daoData?.metadata.avatar || "/avatar.png"} daoName={daoData?.metadata.name || ""} address={daoData?.address || ""} 
+                            active={item?.status} title={item.metadata.title} description={item.metadata.summary} />)
                     }
                 </div>
             </div>
