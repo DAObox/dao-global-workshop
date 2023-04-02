@@ -215,7 +215,7 @@ export default function Example() {
                 </div>
                 <div>
                   <h2 className='font-bold text-black text-[24px]'>XXXXDAO</h2>
-                  <p className='text-[18px]'>100K Members</p>
+                  <p className='text-[18px] font-semibold'>100K Members</p>
                 </div>
               </div>
             </div>
