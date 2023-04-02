@@ -51,7 +51,7 @@ export default function Main() {
                     <h2 className='font-bold text-black text-[40px]'>XXXXDAO Proposals</h2>
                     <button
                         type="button"
-                        className="rounded-md bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                        className="rounded-md bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm"
                     >
                         New Proposal
                     </button>
