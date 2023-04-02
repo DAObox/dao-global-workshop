@@ -18,6 +18,7 @@ import Logo from '../components/Logo'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import Image from 'next/legacy/image'
 import Main from '../components/Main'
+import Head from 'next/head'
 
 const navigation = [
   { name: 'Home', href: '#', icon: HomeIcon, current: false },
@@ -50,6 +51,10 @@ export default function Example() {
         <body class="h-full">
         ```
       */}
+      <Head>
+        <title>The DAO Box Proposals</title>
+        <link rel="icon" href="/favicon.png" />
+      </Head>
       <div>
         <Transition.Root show={sidebarOpen} as={Fragment}>
           <Dialog as="div" className="relative z-50 lg:hidden" onClose={setSidebarOpen}>
