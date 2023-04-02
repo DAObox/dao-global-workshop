@@ -58,7 +58,9 @@ export default function Main() {
           <div className="xl:pr-80">
             <div className="w-full px-4 py-10 space-y-5 sm:px-6 lg:px-8 lg:py-6">
                 <div className="flex items-center justify-between w-full">
-                    <h2 className='font-bold text-black text-[40px]'>{daoData?.metadata.name} Proposals</h2>
+                    <h2 className='font-bold text-black text-[40px]'>{
+                        isLoading == true && daoIsLoading == true ? "Loading..." : daoData?.metadata.name
+                    } Proposals</h2>
                     <button
                         type="button"
                         className="rounded-md bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm"
