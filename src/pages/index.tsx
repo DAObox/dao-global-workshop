@@ -9,15 +9,21 @@ import {
   HomeIcon,
   UsersIcon,
   XMarkIcon,
+  UserGroupIcon,
+  ClipboardDocumentCheckIcon,
+  WalletIcon,
+  CogIcon
 } from '@heroicons/react/24/outline'
+import Logo from '../components/Logo'
+import { ConnectButton } from '@rainbow-me/rainbowkit'
 
 const navigation = [
-  { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-  { name: 'Team', href: '#', icon: UsersIcon, current: false },
-  { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-  { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
+  { name: 'Home', href: '#', icon: HomeIcon, current: false },
+  { name: 'Members', href: '#', icon: UserGroupIcon, current: false },
+  { name: 'Proposals', href: '#', icon: ClipboardDocumentCheckIcon, current: true },
+  { name: 'Finances', href: '#', icon: WalletIcon, current: false },
   { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
-  { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
+  { name: 'Settings', href: '#', icon: CogIcon, current: false },
 ]
 const teams = [
   { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
@@ -25,7 +31,7 @@ const teams = [
   { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
 ]
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
@@ -103,49 +109,19 @@ export default function Example() {
                                   href={item.href}
                                   className={classNames(
                                     item.current
-                                      ? 'bg-gray-50 text-indigo-600'
-                                      : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50',
+                                      ? 'bg-black text-white'
+                                      : 'text-gray-700 hover:text-white hover:bg-black',
                                     'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                                   )}
                                 >
                                   <item.icon
                                     className={classNames(
-                                      item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600',
+                                      item.current ? 'text-white' : 'text-gray-400 group-hover:text-white',
                                       'h-6 w-6 shrink-0'
                                     )}
                                     aria-hidden="true"
                                   />
                                   {item.name}
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
-                        </li>
-                        <li>
-                          <div className="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
-                          <ul role="list" className="-mx-2 mt-2 space-y-1">
-                            {teams.map((team) => (
-                              <li key={team.name}>
-                                <a
-                                  href={team.href}
-                                  className={classNames(
-                                    team.current
-                                      ? 'bg-gray-50 text-indigo-600'
-                                      : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50',
-                                    'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
-                                  )}
-                                >
-                                  <span
-                                    className={classNames(
-                                      team.current
-                                        ? 'text-indigo-600 border-indigo-600'
-                                        : 'text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600',
-                                      'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white'
-                                    )}
-                                  >
-                                    {team.initial}
-                                  </span>
-                                  <span className="truncate">{team.name}</span>
                                 </a>
                               </li>
                             ))}
@@ -163,13 +139,9 @@ export default function Example() {
         {/* Static sidebar for desktop */}
         <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
           {/* Sidebar component, swap this element with another sidebar if you like */}
-          <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
+          <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-ash/40 px-6">
             <div className="flex h-16 shrink-0 items-center">
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt="Your Company"
-              />
+              <Logo />
             </div>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -181,14 +153,14 @@ export default function Example() {
                           href={item.href}
                           className={classNames(
                             item.current
-                              ? 'bg-gray-50 text-indigo-600'
-                              : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50',
+                              ? 'bg-black text-white'
+                              : 'text-gray-700 hover:text-white hover:bg-black',
                             'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                           )}
                         >
                           <item.icon
                             className={classNames(
-                              item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600',
+                              item.current ? 'text-white' : 'text-gray-400 group-hover:text-white',
                               'h-6 w-6 shrink-0'
                             )}
                             aria-hidden="true"
@@ -198,50 +170,6 @@ export default function Example() {
                       </li>
                     ))}
                   </ul>
-                </li>
-                <li>
-                  <div className="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
-                  <ul role="list" className="-mx-2 mt-2 space-y-1">
-                    {teams.map((team) => (
-                      <li key={team.name}>
-                        <a
-                          href={team.href}
-                          className={classNames(
-                            team.current
-                              ? 'bg-gray-50 text-indigo-600'
-                              : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50',
-                            'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
-                          )}
-                        >
-                          <span
-                            className={classNames(
-                              team.current
-                                ? 'text-indigo-600 border-indigo-600'
-                                : 'text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600',
-                              'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white'
-                            )}
-                          >
-                            {team.initial}
-                          </span>
-                          <span className="truncate">{team.name}</span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-                <li className="-mx-6 mt-auto">
-                  <a
-                    href="#"
-                    className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50"
-                  >
-                    <img
-                      className="h-8 w-8 rounded-full bg-gray-50"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
-                    />
-                    <span className="sr-only">Your profile</span>
-                    <span aria-hidden="true">Tom Cook</span>
-                  </a>
                 </li>
               </ul>
             </nav>
@@ -270,17 +198,13 @@ export default function Example() {
           </div>
         </main>
 
-        <aside className="fixed inset-y-0 right-0 hidden w-72 overflow-y-auto border-l border-gray-200 xl:block">
+        <aside className="fixed inset-y-0 right-0 hidden w-[320px] overflow-y-auto border-l border-gray-200 xl:block">
           {/* Second Static sidebar for desktop */}
-          <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+          <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-[320px] lg:flex-col">
             {/* Sidebar component, swap this element with another sidebar if you like */}
             <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
               <div className="flex h-16 shrink-0 items-center">
-                <img
-                  className="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                  alt="Your Company"
-                />
+                <ConnectButton />
               </div>
               <nav className="flex flex-1 flex-col">
                 <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -292,14 +216,14 @@ export default function Example() {
                             href={item.href}
                             className={classNames(
                               item.current
-                                ? 'bg-gray-50 text-indigo-600'
-                                : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50',
+                                ? 'bg-black text-white'
+                                : 'text-gray-700 hover:text-white hover:bg-black',
                               'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                             )}
                           >
                             <item.icon
                               className={classNames(
-                                item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600',
+                                item.current ? 'text-white' : 'text-gray-400 group-hover:text-white',
                                 'h-6 w-6 shrink-0'
                               )}
                               aria-hidden="true"
@@ -319,16 +243,16 @@ export default function Example() {
                             href={team.href}
                             className={classNames(
                               team.current
-                                ? 'bg-gray-50 text-indigo-600'
-                                : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50',
+                                ? 'bg-black text-white'
+                                : 'text-gray-700 hover:text-white hover:bg-black',
                               'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                             )}
                           >
                             <span
                               className={classNames(
                                 team.current
-                                  ? 'text-indigo-600 border-indigo-600'
-                                  : 'text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600',
+                                  ? 'text-black border-indigo-600'
+                                  : 'text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-white',
                                 'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white'
                               )}
                             >
@@ -343,7 +267,7 @@ export default function Example() {
                   <li className="-mx-6 mt-auto">
                     <a
                       href="#"
-                      className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50"
+                      className="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-black"
                     >
                       <img
                         className="h-8 w-8 rounded-full bg-gray-50"
