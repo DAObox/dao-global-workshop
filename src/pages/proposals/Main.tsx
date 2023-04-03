@@ -56,8 +56,9 @@ const Main = () => {
             </div>
           ) : (
             <div className="space-y-2.5">
-              {data?.map((item) => (
+              {data?.map((item, index) => (
                 <Cards
+                  key={index}
                   image={daoData?.metadata.avatar || "/avatar.png"}
                   daoName={daoData?.metadata.name || ""}
                   address={daoData?.address || ""}

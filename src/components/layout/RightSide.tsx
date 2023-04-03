@@ -13,7 +13,7 @@ export function RightSide() {
           <div className="w-full flex flex-col items-center space-y-2.5">
             <div>
               <div className="relative w-[84px] h-[84px]">
-                <Image src={"/tbx.png"} layout="fill" />
+                {/* <Image src={"/tbx.png"} layout="fill" /> */}
               </div>
             </div>
             <div className="flex flex-col items-center space-y-1">
