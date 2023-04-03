@@ -3,7 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Sidebar } from "./Sidebar";
 
-export function MobileSidebar(props) {
+export function MobileSidebar(props: any) {
   return (
     <Transition.Root show={props.sidebarOpen} as={Fragment}>
       <Dialog
