@@ -8,6 +8,7 @@ import { WagmiConfig } from "wagmi";
 
 import { chains, client } from "../wagmi";
 import { AragonProvider } from "@daobox/use-aragon";
+import { RecoilRoot } from "recoil";
 
 function App({ Component, pageProps }: AppProps) {
   const [mounted, setMounted] = React.useState(false);
@@ -27,8 +28,7 @@ function App({ Component, pageProps }: AppProps) {
           <NextHead>
             <title>DAO Box Workshop</title>
           </NextHead>
-
-          {mounted && <Component {...pageProps} />}
+          {mounted && <RecoilRoot><Component {...pageProps} /></RecoilRoot>}
         </AragonProvider>
       </RainbowKitProvider>
     </WagmiConfig>

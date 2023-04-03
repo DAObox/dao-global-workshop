@@ -1,6 +1,9 @@
 import { useFetchDao, useFetchProposals } from "@daobox/use-aragon";
 import Cards from "./Cards";
 import { daoAddress } from "../constants"
+import ProposalModal from "./ProposalModal";
+import { useRecoilState } from "recoil";
+import { modalState } from "../../atoms/modal";
 
 export default function Main() {
     const { data: daoData, isLoading: daoIsLoading, isError: daoError } = useFetchDao({
@@ -9,6 +12,15 @@ export default function Main() {
     const { data, isLoading, isError } = useFetchProposals({
         daoAddressOrEns: daoAddress
     })
+    function ipfsUriToUrl(ipfsUri: string | undefined) {
+        if (!ipfsUri) return "/avatar.png";
+        if (typeof ipfsUri === "string" && ipfsUri.startsWith("ipfs://")) {
+          return "https://ipfs.io/ipfs/" + ipfsUri.slice(7);
+        } else {
+          return ipfsUri;
+        }
+    }
+    const [open, setOpen] = useRecoilState(modalState)
     return(
         <main className="lg:pl-72">
           <div className="xl:pr-80">
@@ -20,6 +32,9 @@ export default function Main() {
                     <button
                         type="button"
                         className="rounded-md bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm"
+                        data-modal-target="proposal-modal"
+                        data-modal-toggle="proposal-modal"
+                        onClick={() => {setOpen(true)}}
                     >
                         New Proposal
                     </button>
@@ -36,13 +51,14 @@ export default function Main() {
                     :
                         <div className="space-y-2.5">
                             {
-                                data?.map(item => <Cards image={daoData?.metadata.avatar || "/avatar.png"} daoName={daoData?.metadata.name || ""} address={daoData?.address || ""} 
+                                data?.map(item => <Cards image={ipfsUriToUrl(daoData?.metadata.avatar)} daoName={daoData?.metadata.name || ""} address={daoData?.address || ""} 
                                     active={item?.status} title={item.metadata.title} description={item.metadata.summary} />)
                             }
                         </div>
                 }
             </div>
           </div>
+          <ProposalModal />
         </main>
     )
 }
