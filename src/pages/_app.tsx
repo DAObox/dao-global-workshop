@@ -8,6 +8,7 @@ import { WagmiConfig } from "wagmi";
 
 import { chains, client } from "../wagmi";
 import { AragonProvider } from "@daobox/use-aragon";
+import Layout from "../components/layout";
 
 function App({ Component, pageProps }: AppProps) {
   const [mounted, setMounted] = React.useState(false);
@@ -27,8 +28,11 @@ function App({ Component, pageProps }: AppProps) {
           <NextHead>
             <title>DAO Box Workshop</title>
           </NextHead>
-
-          {mounted && <Component {...pageProps} />}
+          {mounted && (
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          )}
         </AragonProvider>
       </RainbowKitProvider>
     </WagmiConfig>
