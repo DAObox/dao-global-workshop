@@ -4,10 +4,6 @@ import { CheckIcon } from '@heroicons/react/24/outline'
 import { useRecoilState } from 'recoil'
 import { modalState } from '../../atoms/modal'
 
-interface Props {
-    open: boolean
-}
-
 export default function ProposalModal() {
 
     const [open, setOpen] = useRecoilState(modalState)
