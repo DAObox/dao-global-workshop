@@ -2,7 +2,7 @@ import { useState } from "react";
 import Head from "next/head";
 import { Headbar } from "./Headbar";
 import { MobileSidebar } from "./MobileSidebar";
-import { RightSide } from "./RightSide";
+
 import { DesktopSidebar } from "./DesktopSidebar";
 import { MainPort } from "./MainPort";
 
@@ -23,7 +23,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <DesktopSidebar />
         <Headbar setSidebarOpen={setSidebarOpen} />
         <MainPort>{children}</MainPort>
-        {/* <RightSide /> */}
       </div>
     </>
   );

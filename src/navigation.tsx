@@ -1,10 +1,10 @@
 import {
-  DocumentDuplicateIcon,
   HomeIcon,
   UserGroupIcon,
   ClipboardDocumentCheckIcon,
   WalletIcon,
   CogIcon,
+  WrenchScrewdriverIcon,
 } from "@heroicons/react/24/outline";
 
 export const navigation = [
@@ -18,4 +18,10 @@ export const navigation = [
   },
   { name: "Finances", href: "/finances", icon: WalletIcon, current: false },
   { name: "Settings", href: "/settings", icon: CogIcon, current: false },
+  {
+    name: "Testing",
+    href: "/testing",
+    icon: WrenchScrewdriverIcon,
+    current: false,
+  },
 ];
