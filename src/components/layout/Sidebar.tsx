@@ -1,10 +1,11 @@
 import Logo from "../Logo";
-import { classNames } from "../../pages";
+
 import { navigation } from "../../navigation";
+import { classNames } from "../../utils/strings";
 
 export function Sidebar() {
   return (
-    <div className="flex flex-col px-6 overflow-y-auto border-r border-gray-200 grow gap-y-5 bg-ash">
+    <div className="flex flex-col  px-6 overflow-y-auto border-r border-gray-200 grow gap-y-5 bg-slate-50">
       <div className="flex items-center h-16 shrink-0">
         <Logo />
       </div>
