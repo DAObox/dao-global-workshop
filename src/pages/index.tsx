@@ -15,14 +15,20 @@ import { ConnectButton } from '@rainbow-me/rainbowkit'
 import Image from 'next/legacy/image'
 import Main from '../components/Main'
 import Head from 'next/head'
+import Home from '../components/Home'
+import Members from '../components/Members'
+import Finances from '../components/Finance'
+import Documents from '../components/Documents'
+import Settings from '../components/Settings'
+import Link from 'next/link'
 
 const navigation = [
-  { name: 'Home', href: '#', icon: HomeIcon, current: false },
-  { name: 'Members', href: '#', icon: UserGroupIcon, current: false },
-  { name: 'Proposals', href: '#', icon: ClipboardDocumentCheckIcon, current: true },
-  { name: 'Finances', href: '#', icon: WalletIcon, current: false },
-  { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
-  { name: 'Settings', href: '#', icon: CogIcon, current: false },
+  { name: 'Home', href: '?', icon: HomeIcon, current: false },
+  { name: 'Members', href: '?segment=members', icon: UserGroupIcon, current: false },
+  { name: 'Proposals', href: '?segment=proposals', icon: ClipboardDocumentCheckIcon, current: true },
+  { name: 'Finances', href: '?segment=finance', icon: WalletIcon, current: false },
+  { name: 'Documents', href: '?segment=documents', icon: DocumentDuplicateIcon, current: false },
+  { name: 'Settings', href: '?segment=settings', icon: CogIcon, current: false },
 ]
 const teams = [
   { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
@@ -32,6 +38,12 @@ const teams = [
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
+}
+
+
+let searchParams: any;
+if (typeof document != "undefined") {
+    searchParams = new URLSearchParams(window.document.location.search)
 }
 
 export default function Example() {
@@ -108,24 +120,25 @@ export default function Example() {
                           <ul role="list" className="-mx-2 space-y-1">
                             {navigation.map((item) => (
                               <li key={item.name}>
-                                <a
-                                  href={item.href}
-                                  className={classNames(
-                                    item.current
-                                      ? 'bg-black text-white'
-                                      : 'text-gray-700 hover:text-white hover:bg-black',
-                                    'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
-                                  )}
-                                >
-                                  <item.icon
+                                <Link href={item.href} legacyBehavior={true}>
+                                  <a
                                     className={classNames(
-                                      item.current ? 'text-white' : 'text-gray-400 group-hover:text-white',
-                                      'h-6 w-6 shrink-0'
+                                      item.current
+                                        ? 'bg-black text-white'
+                                        : 'text-gray-700 hover:text-white hover:bg-black',
+                                      'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                                     )}
-                                    aria-hidden="true"
-                                  />
-                                  {item.name}
-                                </a>
+                                  >
+                                    <item.icon
+                                      className={classNames(
+                                        item.current ? 'text-white' : 'text-gray-400 group-hover:text-white',
+                                        'h-6 w-6 shrink-0'
+                                      )}
+                                      aria-hidden="true"
+                                    />
+                                    {item.name}
+                                  </a>
+                                </Link>
                               </li>
                             ))}
                           </ul>
@@ -152,24 +165,25 @@ export default function Example() {
                   <ul role="list" className="-mx-2 space-y-1">
                     {navigation.map((item) => (
                       <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className={classNames(
-                            item.current
-                              ? 'bg-black text-white'
-                              : 'text-gray-700 hover:text-white hover:bg-black',
-                            'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
-                          )}
-                        >
-                          <item.icon
+                        <Link href={item.href} legacyBehavior={true}>
+                          <a
                             className={classNames(
-                              item.current ? 'text-white' : 'text-gray-400 group-hover:text-white',
-                              'h-6 w-6 shrink-0'
+                              item.current
+                                ? 'bg-black text-white'
+                                : 'text-gray-700 hover:text-white hover:bg-black',
+                              'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                             )}
-                            aria-hidden="true"
-                          />
-                          {item.name}
-                        </a>
+                          >
+                            <item.icon
+                              className={classNames(
+                                item.current ? 'text-white' : 'text-gray-400 group-hover:text-white',
+                                'h-6 w-6 shrink-0'
+                              )}
+                              aria-hidden="true"
+                            />
+                            {item.name}
+                          </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -196,6 +210,11 @@ export default function Example() {
         </div>
 
         {/** Middle segment with list of proposals */}
+        {
+          searchParams?.get("segment") == "" ? <Home /> : searchParams?.get("segment") == "members" ? <Members /> : searchParams?.get("segment") == "proposals" ? <Main />
+          : searchParams?.get("segment") == "finances" ? <Finances /> : searchParams?.get("segment") == "documents" ? <Documents /> 
+          : searchParams?.get("segment") == "settings" && <Settings />
+        }
         <Main />
 
         <aside className="fixed inset-y-0 right-0 hidden w-[320px] overflow-y-auto border-l border-gray-200 xl:block">

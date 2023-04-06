@@ -35,29 +35,10 @@ export default function ProposalModal() {
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel className="relative px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
-                <div>
-                  <div className="flex items-center justify-center w-12 h-12 mx-auto bg-green-100 rounded-full">
-                    <CheckIcon className="w-6 h-6 text-green-600" aria-hidden="true" />
+                <div className='w-full'>
+                  <h3 className='text-3xl font-semibold'>Create a new proposal</h3>
+                  <div className='w-full'>
                   </div>
-                  <div className="mt-3 text-center sm:mt-5">
-                    <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
-                      Payment successful
-                    </Dialog.Title>
-                    <div className="mt-2">
-                      <p className="text-sm text-gray-500">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur amet labore.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-5 sm:mt-6">
-                  <button
-                    type="button"
-                    className="inline-flex justify-center w-full px-3 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    onClick={() => setOpen(false)}
-                  >
-                    Go back to dashboard
-                  </button>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
